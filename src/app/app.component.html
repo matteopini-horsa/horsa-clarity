@@ -1,0 +1,173 @@
+<div class="main-container">
+    <header class="header header-4">
+        <div class="branding"><img src="/assets/logo.png"></div>
+        <div class="header-actions">
+            <a href="javascript://" class="nav-link nav-icon-text">
+                <span class="nav-text">Welcome user</span>
+                <clr-icon shape="user"></clr-icon>
+            </a>
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+                    <clr-icon shape="cog"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <a href="..." clrDropdownItem>
+                        <clr-icon shape="info-circle"></clr-icon>
+                        About</a>
+                    <a href="..." clrDropdownItem>
+                        <clr-icon shape="cog"></clr-icon>
+                        Preferences</a>
+                    <a href="..." clrDropdownItem>
+                        <clr-icon shape="logout"></clr-icon>
+                        Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+    <div class="content-container">
+        <clr-vertical-nav clrVerticalNavCollapsible="'true'" [clrVerticalNavCollapsed]="clr_vertical_nav_collapsed">
+            <!-- clrVerticalNavLink elements as needed-->
+            <!-- clr-nav-group components as needed -->
+            <a clrVerticalNavLink>
+                <clr-icon shape="home" clrVerticalNavIcon></clr-icon>
+                Home
+            </a>
+            <a clrVerticalNavLink>
+                <clr-icon shape="file" clrVerticalNavIcon></clr-icon>
+                Documenti per il fornitore
+            </a>
+            <a clrVerticalNavLink>
+                <clr-icon shape="check" clrVerticalNavIcon></clr-icon>
+                Materiali
+            </a>
+            <a clrVerticalNavLink>
+                <clr-icon shape="sun" clrVerticalNavIcon></clr-icon>
+                I miei ordini
+            </a>
+            <a clrVerticalNavLink>
+                <clr-icon shape="objects" clrVerticalNavIcon></clr-icon>
+                Documenti di trasporto
+            </a>
+            <a clrVerticalNavLink>
+                <clr-icon shape="piggy-bank" clrVerticalNavIcon></clr-icon>
+                Giacenze
+            </a>
+            <a clrVerticalNavLink>
+                <clr-icon shape="volume-down" clrVerticalNavIcon></clr-icon>
+                Report
+            </a>
+        </clr-vertical-nav>
+
+        <div class="content-area">
+            <!--            <div>
+                            <button class="btn btn-primary">Primary</button>
+                            <button class="btn btn-success">Success</button>
+                            <button class="btn btn-warning">Warning</button>
+                            <button class="btn btn-danger">Danger</button>
+                            <button class="btn btn-danger" disabled>Disabled</button>
+                        </div>-->
+            <!--            <clr-tooltip>
+                                        <clr-icon shape="help" clrTooltipTrigger></clr-icon>
+                                        <clr-tooltip-content>
+                                            Bla bla bla
+                                        </clr-tooltip-content>
+                                    </clr-tooltip>-->
+            <!--            <clr-checkbox-container>
+                                        <label>Full checkbox</label>
+                                        <clr-checkbox-wrapper>
+                                            <input type="checkbox" clrCheckbox name="options" required value="option1"
+                                                   [(ngModel)]="options.option1"/>
+                                            <label>Option 1</label>
+                                        </clr-checkbox-wrapper>
+                                        <clr-checkbox-wrapper>
+                                            <input type="checkbox" clrCheckbox name="options" required value="option2"
+                                                   [(ngModel)]="options.option2"/>
+                                            <label>Option 2</label>
+                                        </clr-checkbox-wrapper>
+                                        <clr-control-helper>Helper text</clr-control-helper>
+                                        <clr-control-error>This field is required!</clr-control-error>
+                                    </clr-checkbox-container>-->
+            <h1>I miei ordini</h1>
+            <clr-accordion>
+                <clr-accordion-panel>
+                    <clr-accordion-title>
+                        Pannello di ricerca
+                    </clr-accordion-title>
+                    <!--                    <clr-accordion-description>Imposta i filtri di ricerca per affinare i risultati</clr-accordion-description>-->
+                    <clr-accordion-content *clrIfExpanded>
+                        <form clrForm clrLayout="vertical">
+                            <div style="display: flex;flex-direction: row;justify-content: space-between; align-items: center;">
+                                <clr-input-container>
+                                    <label>Numero ordine</label>
+                                    <input clrInput placeholder="Inserisci numero ordine" name="name"/>
+                                </clr-input-container>
+                                <clr-input-container>
+                                    <label>Inserisci codice materiale</label>
+                                    <input clrInput placeholder="Inserisci numero ordine" name="name"/>
+                                </clr-input-container>
+                                <clr-combobox-container>
+                                    <label>Stato ordine</label>
+                                    <clr-combobox [(ngModel)]="combo_selection" name="myState" required>
+                                        <clr-options>
+                                            <clr-option *clrOptionItems="let status of statuses; field:'label'" [clrValue]="status">
+                                                <span class="color-square" [style.backgroundColor]="status.icon"></span> {{status.label}}
+                                            </clr-option>
+                                        </clr-options>
+                                    </clr-combobox>
+                                </clr-combobox-container>
+                                <div class="clr-control-container">
+                                    <button class="btn btn-primary">
+                                        <clr-icon shape="search"></clr-icon>
+                                        CERCA</button>
+                                    <button class="btn btn-warning-outline">
+                                        <clr-icon shape="times-circle"></clr-icon>
+                                        ANNULLA</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </clr-accordion-content>
+                </clr-accordion-panel>
+            </clr-accordion>
+
+            <clr-datagrid [(clrDgSelected)]="selected" style="height:100%;">
+                <clr-dg-column [clrDgColType]="'number'">User ID</clr-dg-column>
+                <clr-dg-column>Name</clr-dg-column>
+                <clr-dg-column [clrDgColType]="'date'">Creation date</clr-dg-column>
+                <clr-dg-column>Favorite color</clr-dg-column>
+
+                <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+                    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+                    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+                    <clr-dg-cell>
+                        <input clrDate placeholder="Pick a date" name="today" [(ngModel)]="user.creation" style="margin-top:0" />
+                    </clr-dg-cell>
+<!--                    <clr-dg-cell>{{user.creation | date:'dd/MM/yyyy'}}</clr-dg-cell>-->
+                    <clr-dg-cell>
+                        <span class="color-square" [style.backgroundColor]="user.color"></span>
+                    </clr-dg-cell>
+
+                    <clr-dg-row-detail *clrIfExpanded>
+                        Lorem ipsum
+                    </clr-dg-row-detail>
+                </clr-dg-row>
+
+                <clr-dg-footer>
+                    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+                        <clr-dg-page-size [clrPageSizeOptions]="[5,10,20,50,100]">Users per page</clr-dg-page-size>
+                        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+                    </clr-dg-pagination>
+                </clr-dg-footer>
+            </clr-datagrid>
+            <!--            <clr-alerts>
+                            <clr-alert clrAlertType="info" [clrAlertClosable]="true">
+                                <clr-alert-item>This is my alert text</clr-alert-item>
+                            </clr-alert>
+                            <clr-alert clrAlertType="warning" [clrAlertClosable]="true">
+                                <clr-alert-item>This is my alert text</clr-alert-item>
+                            </clr-alert>
+                        </clr-alerts>-->
+        </div>
+    </div>
+</div>

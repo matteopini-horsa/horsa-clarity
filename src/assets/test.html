@@ -3,6 +3,7 @@
 function xhr() {
 	const xhr = new XMLHttpRequest();
 	xhr.open('GET', 'https://p700152-iflmap.hcisbp.eu2.hana.ondemand.com/http/nanni');
+    xhr.withCredentials = true;
 	xhr.setRequestHeader('Authorization', 'Basic bWF0dGVvLnBpbmlAaG9yc2EuaXQ6bWFwaTM0NDJAUw==');
 	xhr.send();
 	xhr.onload = () => {
